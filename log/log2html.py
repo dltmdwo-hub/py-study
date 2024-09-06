@@ -64,8 +64,12 @@ def create_html_content(parsed_logs):
     """
 
     for log in parsed_logs:
+        date_str = log['timestamp'].strftime("%y년 %m월 %d일")
+        time_str = log['timestamp'].strftime("%p %I시 %M분 %S초").replace("AM", "오전").replace("PM", "오후")
         html_content += f"""
             <tr>
+                <td>{date_str}</td>
+                <td>{time_str}</td>
                 <td>{log['timestamp']}</td>
                 <td>{log['log_level']}</td>
                 <td>{log['message']}</td>
